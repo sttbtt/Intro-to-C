@@ -32,15 +32,14 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-    while (*str != '\0') {
-        if (*str == 'c') {
-            c = *str;
-        }
-        else {
-            c = NULL;
-        }
-        str++;
-    return c;
+    while (*str != '\0')
+    {
+    if (*str == c) {
+      return str;
+    }
+    str++;
+    }
+    return 0;
 }
 
 /*
@@ -53,7 +52,28 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
+  int count = 0;
+  
+  while (*haystack != '\0')
+  {
+    if (*haystack == *needle) {
+      for (int i = 0; i < strlen(needle); i++)
+      {
+        if (haystack[i] == needle[i]) {
+          count++;
+        }
+        printf("%c", haystack[i]);
+        if (count == strlen(needle)) {
+          return needle;
+        }
+      }
+      
+    }
+    haystack++;
+  }
 
+  return 0;
+  
 }
 
 #ifndef TESTING
