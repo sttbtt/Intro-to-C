@@ -39,7 +39,7 @@ char *find_char(char *str, int c)
     }
     str++;
     }
-    return 0;
+    return NULL;
 }
 
 /*
@@ -57,14 +57,17 @@ char *find_string(char *haystack, char *needle)
   while (*haystack != '\0')
   {
     if (*haystack == *needle) {
-      for (int i = 0; i < strlen(needle); i++)
+      for (int i = 0; i < (int)strlen(needle); i++)
       {
+        if (haystack[i] == '\0') {
+            return NULL;
+        }
         if (haystack[i] == needle[i]) {
           count++;
         }
-        printf("%c", haystack[i]);
-        if (count == strlen(needle)) {
-          return needle;
+//        printf("%c", haystack[i]);
+        if (count == (int)strlen(needle)) {
+          return haystack;
         }
       }
       
@@ -72,13 +75,15 @@ char *find_string(char *haystack, char *needle)
     haystack++;
   }
 
-  return 0;
+  return NULL;
   
 }
 
 #ifndef TESTING
 int main(void)
 {
+    char* hello = "hello";
+    char* world = "world";
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 
