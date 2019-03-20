@@ -20,13 +20,14 @@ typedef struct Person {
     When setting the `name` field, use your previously-built string_dup
     function, which handles the allocation of memory for the new string.
 */
+
 Person *createPerson(char *name, int age, int height, int weight)
 {
     struct Person *person = malloc(sizeof(struct Person));
 
     int name_length = strlen(name);
     person->name = malloc(name_length);
-    strcpy(person->name, name);
+    person->name = string_dup(name);
     person->age = age;
     person->height = height;
     person->weight = weight;
