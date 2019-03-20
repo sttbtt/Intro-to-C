@@ -18,6 +18,8 @@ char *string_dup(char *src)
         *dup_string = *src;
         src++;
     }
+    dup_string[length] = '\0';
+    return dup_string;
 }
 
 /*
